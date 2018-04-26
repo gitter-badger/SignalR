@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.AspNetCore.SignalR.Protocol
+namespace Microsoft.AspNetCore.SignalR
 {
     /// <summary>
     /// This class is designed to support the framework. The API is subject to breaking changes.
