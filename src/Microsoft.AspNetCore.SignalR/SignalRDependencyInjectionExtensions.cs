@@ -10,10 +10,10 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class SignalRDependencyInjectionExtensions
     {
-        public static ISignalRServerBuilder AddHubOptions<THub>(this ISignalRServerBuilder signalrBuilder, Action<HubOptions<THub>> options) where THub : Hub
+        public static ISignalRServerBuilder AddHubOptions<THub>(this ISignalRServerBuilder signalrBuilder, Action<HubOptions<THub>> configure) where THub : Hub
         {
             signalrBuilder.Services.AddSingleton<IConfigureOptions<HubOptions<THub>>, HubOptionsSetup<THub>>();
-            signalrBuilder.Services.Configure(options);
+            signalrBuilder.Services.Configure(configure);
             return signalrBuilder;
         }
 
@@ -24,9 +24,9 @@ namespace Microsoft.Extensions.DependencyInjection
             return services.AddSignalRCore();
         }
 
-        public static ISignalRServerBuilder AddSignalR(this IServiceCollection services, Action<HubOptions> options)
+        public static ISignalRServerBuilder AddSignalR(this IServiceCollection services, Action<HubOptions> configure)
         {
-            return services.Configure(options)
+            return services.Configure(configure)
                 .AddSignalR();
         }
     }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.AspNetCore.SignalR
 {
-    public static class IHubClientsExtensions
+    public static class HubClientsExtensions
     {
         /// <summary>
         /// </summary>

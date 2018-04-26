@@ -10,29 +10,29 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class RedisDependencyInjectionExtensions
     {
-        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder builder)
+        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder signalrBuilder)
         {
-            return AddRedis(builder, o => { });
+            return AddRedis(signalrBuilder, o => { });
         }
 
-        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder builder, string redisConnectionString)
+        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder signalrBuilder, string redisConnectionString)
         {
-            return AddRedis(builder, o =>
+            return AddRedis(signalrBuilder, o =>
             {
                 o.Configuration = ConfigurationOptions.Parse(redisConnectionString);
             });
         }
 
-        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder builder, Action<RedisOptions> configure)
+        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder signalrBuilder, Action<RedisOptions> configure)
         {
-            builder.Services.Configure(configure);
-            builder.Services.AddSingleton(typeof(HubLifetimeManager<>), typeof(RedisHubLifetimeManager<>));
-            return builder;
+            signalrBuilder.Services.Configure(configure);
+            signalrBuilder.Services.AddSingleton(typeof(HubLifetimeManager<>), typeof(RedisHubLifetimeManager<>));
+            return signalrBuilder;
         }
 
-        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder builder, string redisConnectionString, Action<RedisOptions> configure)
+        public static ISignalRServerBuilder AddRedis(this ISignalRServerBuilder signalrBuilder, string redisConnectionString, Action<RedisOptions> configure)
         {
-            return AddRedis(builder, o =>
+            return AddRedis(signalrBuilder, o =>
             {
                 o.Configuration = ConfigurationOptions.Parse(redisConnectionString);
                 configure(o);

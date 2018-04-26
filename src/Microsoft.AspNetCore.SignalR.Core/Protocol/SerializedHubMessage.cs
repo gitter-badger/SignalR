@@ -3,9 +3,8 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.SignalR.Protocol;
 
-namespace Microsoft.AspNetCore.SignalR
+namespace Microsoft.AspNetCore.SignalR.Protocol
 {
     /// <summary>
     /// This class is designed to support the framework. The API is subject to breaking changes.
