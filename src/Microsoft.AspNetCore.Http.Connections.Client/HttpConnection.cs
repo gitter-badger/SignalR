@@ -62,7 +62,14 @@ namespace Microsoft.AspNetCore.Http.Connections.Client
         }
 
         public override IFeatureCollection Features { get; } = new FeatureCollection();
-        public override string ConnectionId { get; set; }
+
+        // ConnectionId will be null if negotate was skipped
+        public override string ConnectionId
+        {
+            get => _connectionId;
+            set => throw new InvalidOperationException("The ConnectionId is set internally when the HttpConnection starts by negotate.");
+        }
+
         public override IDictionary<object, object> Items { get; set; } = new ConnectionItems();
 
         bool IConnectionInherentKeepAliveFeature.HasInherentKeepAlive => _hasInherentKeepAlive;
