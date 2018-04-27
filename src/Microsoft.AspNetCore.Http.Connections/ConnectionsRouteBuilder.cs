@@ -15,7 +15,7 @@ namespace Microsoft.AspNetCore.Http.Connections
         private readonly HttpConnectionDispatcher _dispatcher;
         private readonly RouteBuilder _routes;
 
-        public ConnectionsRouteBuilder(RouteBuilder routes, HttpConnectionDispatcher dispatcher)
+        internal ConnectionsRouteBuilder(RouteBuilder routes, HttpConnectionDispatcher dispatcher)
         {
             _routes = routes;
             _dispatcher = dispatcher;
