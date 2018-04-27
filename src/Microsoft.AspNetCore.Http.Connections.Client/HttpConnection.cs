@@ -63,11 +63,18 @@ namespace Microsoft.AspNetCore.Http.Connections.Client
 
         public override IFeatureCollection Features { get; } = new FeatureCollection();
 
-        // ConnectionId will be null if negotate was skipped
+        /// <summary>
+        /// Gets or sets the connection ID.
+        /// </summary>
+        /// <remarks>
+        /// The connection ID is set when the <see cref="HttpConnection"/> is started and should not be set by user code.
+        /// If the connection was created with <see cref="HttpConnectionOptions.SkipNegotiation"/> set to <c>true</c>
+        /// then the connection ID will be <c>null</c>.
+        /// </remarks>
         public override string ConnectionId
         {
             get => _connectionId;
-            set => throw new InvalidOperationException("The ConnectionId is set internally when the HttpConnection starts by negotate.");
+            set => throw new InvalidOperationException("The ConnectionId is set internally and should not be set by user code.");
         }
 
         public override IDictionary<object, object> Items { get; set; } = new ConnectionItems();
