@@ -19,5 +19,8 @@
   },
   "SignalREchoAll": {
     "ClientProperties": { "Scenario": "echoAll" }
+  },
+  "SignalREchoIdle": {
+    "ClientProperties": { "Scenario": "echoIdle"}
   }
 }
